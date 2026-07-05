@@ -1,9 +1,10 @@
 package makanancontroller
 
 import (
-	"net/http"
-	"text/template"
 	"KnapSack/models/makananmodel"
+	"KnapSack/views"
+	"html/template"
+	"net/http"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
@@ -12,7 +13,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		"dt_makanan": dt_makanan,
 	}
 
-	temp, err := template.ParseFiles("views/home/data.html")
+	temp, err := template.ParseFS(views.FS, "home/data.html")
 	if err != nil {
 		panic(err)
 	}
